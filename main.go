@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"math/rand"
 	"os"
+	"sync"
 	"time"
 
 	"github.com/kimpers/dca/lib"
@@ -25,9 +25,21 @@ func main() {
 
 	client := lib.NewClient(&config)
 
-	fmt.Printf("--- m:\n%v\n\n", config)
-	order, err := client.Buy()
-	log.Printf("%v", err)
-	log.Printf("%v", order)
+	scheduledBuy := func() {
+		order, err := client.Buy()
 
+		if err != nil {
+			log.Printf("Failed to complete order. Error: %v", err)
+			return
+		}
+
+		log.Printf("Order completed %v", order)
+	}
+
+	lib.Schedule(config.Schedule, scheduledBuy)
+
+	// Wait forever
+	wg := &sync.WaitGroup{}
+	wg.Add(1)
+	wg.Wait()
 }

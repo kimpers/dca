@@ -19,7 +19,8 @@ type Config struct {
 		Ticker     string  `yaml:"ticker"`
 		Percentage float64 `yaml:"percentage"`
 	}
-	Amount string `yaml:"amount"`
+	Amount   string `yaml:"amount"`
+	Schedule string `yaml:"schedule"`
 }
 
 func (config *Config) GetCoin() string {
