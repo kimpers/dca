@@ -6,7 +6,7 @@ coinbase:
 
 amount: 100
 
-pairs:
-  - { name: BTC, percentage: 40 }
-  - { name: ETH, percentage: 40 }
-  - { name: ZEC, percentage: 20 }
+coins:
+  - { ticker: BTC, percentage: 30 }
+  - { ticker: ETH, percentage: 50 }
+  - { ticker: ZEC, percentage: 20 }
