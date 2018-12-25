@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/kimpers/dca/lib"
+	"github.com/robfig/cron"
 )
 
 func main() {
@@ -36,7 +37,11 @@ func main() {
 		log.Printf("Order completed %v", order)
 	}
 
-	lib.Schedule(config.Schedule, scheduledBuy)
+	c := cron.New()
+	c.AddFunc(config.Schedule, scheduledBuy)
+
+	log.Println("Scheduled purchasing started...")
+	c.Start()
 
 	// Wait forever
 	wg := &sync.WaitGroup{}

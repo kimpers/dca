@@ -1,12 +1,22 @@
 coinbase:
+  # API secret, key and passphrase can be created at https://pro.coinbase.com/profile/api
   secret: secret
   key: key
   passphrase: passphrase
+  # Base currency to use when purchasing coins
   baseCurrency: USD
 
-amount: 100
+# Amount in base currency
+amount: 10
 
+# Valid cron tab format
+# "@hourly", "@daily", "@weekly", "@monthly", or
+# custom cron schedule (See https://crontab.guru)
+schedule: "@weekly"
+
+# List of coins to purchase and the percentage weight for
+# how likely to purchase any of them at a scheduled time
+# Note: Percentages should add up to 100%
 coins:
   - { ticker: BTC, percentage: 30 }
-  - { ticker: ETH, percentage: 50 }
-  - { ticker: ZEC, percentage: 20 }
+  - { ticker: ETH, percentage: 70 }
