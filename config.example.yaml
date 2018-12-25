@@ -1,0 +1,12 @@
+coinbase:
+  secret: test
+  key: 12345
+  passphrase: 543543
+  baseCurrency: EUR
+
+pairs:
+  - { name: BTC, percentage: 40 }
+  - { name: ETH, percentage: 40 }
+  - { name: ZEC, percentage: 20 }
+
+
