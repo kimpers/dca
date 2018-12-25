@@ -18,6 +18,7 @@ type Config struct {
 		Name       string  `yaml:"name"`
 		Percentage float64 `yaml:"percentage"`
 	}
+	Amount string `yaml:"amount"`
 }
 
 func (config *Config) ReadFile(path string) {

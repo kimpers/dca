@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
+
+[[projects]]
+  digest = "1:6713db7de45e9d70e337af1a45f8fe76a313d579ca5657812732713eaadca930"
+  name = "github.com/preichenberger/go-gdax"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "eb74ba719d9aa7f1958860367a47cfd7a9a65bfd"
+  version = "0.5.7"
+
+[[projects]]
   digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
@@ -12,6 +28,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["gopkg.in/yaml.v2"]
+  input-imports = [
+    "github.com/preichenberger/go-gdax",
+    "gopkg.in/yaml.v2",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -18,5 +18,11 @@ func main() {
 	config := lib.Config{}
 	config.ReadFile(configPath)
 
+	client := lib.NewClient(&config)
+
 	fmt.Printf("--- m:\n%v\n\n", config)
+	order, err := client.Buy("ETH")
+	log.Printf("%v", err)
+	log.Printf("%v", order)
+
 }
