@@ -38,9 +38,16 @@ func main() {
 	}
 
 	c := cron.New()
-	c.AddFunc(config.Schedule, scheduledBuy)
+	schedule, err := cron.ParseStandard(config.Schedule)
+
+	if err != nil {
+		log.Fatalf("Failed to parse schedule. Error: %v", err)
+	}
+
+	c.Schedule(schedule, cron.FuncJob(scheduledBuy))
 
 	log.Println("Scheduled purchasing started...")
+
 	c.Start()
 
 	// Wait forever
