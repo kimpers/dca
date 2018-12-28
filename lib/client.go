@@ -20,12 +20,13 @@ func NewClient(config *Config) *Client {
 }
 
 func (client *Client) Buy() (coinbase.Order, error) {
-	pair := client.config.GetCoin() + "-" + client.config.Coinbase.BaseCurrency
+	coin := client.config.GetCoin()
+	pair := coin.Ticker + "-" + coin.BaseCurrency
 	order := coinbase.Order{
 		Type:      "market",
 		Side:      "buy",
 		ProductId: pair,
-		Funds:     client.config.Amount,
+		Funds:     coin.Amount,
 	}
 
 	return client.coinbase.CreateOrder(&order)

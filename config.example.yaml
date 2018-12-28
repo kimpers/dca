@@ -3,20 +3,18 @@ coinbase:
   secret: secret
   key: key
   passphrase: passphrase
-  # Base currency to use when purchasing coins
-  baseCurrency: USD
-
-# Amount in base currency
-amount: 10
 
 # Valid cron tab format
 # "@hourly", "@daily", "@weekly", "@monthly", or
 # custom cron schedule (See https://crontab.guru)
-schedule: "@weekly"
+schedule: "@daily"
 
 # List of coins to purchase and the percentage weight for
-# how likely to purchase any of them at a scheduled time
+# how likely to purchase any of them at the scheduled time,
+# the base currency to purchase them with and
+# the amount in the base currency to purchase
+#
 # Note: Percentages should add up to 100%
 coins:
-  - { ticker: BTC, percentage: 30 }
-  - { ticker: ETH, percentage: 70 }
+  - { ticker: ETH, percentage: 60, baseCurrency: USD, amount: 10 }
+  - { ticker: BTC, percentage: 40, baseCurrency: USD, amount: 10 }

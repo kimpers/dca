@@ -4,6 +4,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"strconv"
 	"sync"
 	"time"
 
@@ -34,7 +35,9 @@ func main() {
 			return
 		}
 
-		log.Printf("Order completed %v", order)
+		amount, _ := strconv.ParseFloat(order.Funds, 64)
+
+		log.Printf("Order completed of %s for %s (%s)", strconv.FormatFloat(amount, 'f', -1, 64), order.ProductId, order.Id)
 	}
 
 	c := cron.New()

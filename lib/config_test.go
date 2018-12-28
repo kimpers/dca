@@ -7,23 +7,21 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type Coin struct {
-	Ticker string
-}
-
-func TestGetCoin(t *testing.T) {
+func TestGetPair(t *testing.T) {
 	// Dummy seed will provide numbers 82 & 88
 	rand.Seed(1)
 	config := Config{}
 
-	config.Coins = []struct {
-		Ticker     string  `yaml:"ticker"`
-		Percentage float64 `yaml:"percentage"`
-	}{
-		{"ETH", 83},
-		{"BTC", 17},
+	config.Coins = []Coin{
+		{"ETH", 83, "USD", "43.1"},
+		{"BTC", 17, "USD", "123.21"},
 	}
 
-	assert.Equal(t, "ETH", config.GetCoin(), "ETH first time")
-	assert.Equal(t, "BTC", config.GetCoin(), "BTC second time")
+	coin := config.GetCoin()
+	assert.Equal(t, "ETH-USD", coin.GetPair(), "ETH first time")
+	assert.Equal(t, "43.1", coin.Amount, "Correct amount")
+
+	coin = config.GetCoin()
+	assert.Equal(t, "BTC-USD", coin.GetPair(), "BTC second time")
+	assert.Equal(t, "123.21", coin.Amount, "Correct amount")
 }

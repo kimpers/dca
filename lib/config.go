@@ -8,33 +8,39 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-type Config struct {
-	Coinbase struct {
-		Secret       string `yaml:"secret"`
-		Key          string `yaml:"key"`
-		Passphrase   string `yaml:"passphrase"`
-		BaseCurrency string `yaml:"baseCurrency"`
-	}
-	Coins []struct {
-		Ticker     string  `yaml:"ticker"`
-		Percentage float64 `yaml:"percentage"`
-	}
-	Amount   string `yaml:"amount"`
-	Schedule string `yaml:"schedule"`
+type Coin struct {
+	Ticker       string  `yaml:"ticker"`
+	Percentage   float64 `yaml:"percentage"`
+	BaseCurrency string  `yaml:"baseCurrency"`
+	Amount       string  `yaml:"amount"`
 }
 
-func (config *Config) GetCoin() string {
+func (coin Coin) GetPair() string {
+	return coin.Ticker + "-" + coin.BaseCurrency
+}
+
+type Config struct {
+	Coinbase struct {
+		Secret     string `yaml:"secret"`
+		Key        string `yaml:"key"`
+		Passphrase string `yaml:"passphrase"`
+	}
+	Schedule string `yaml:"schedule"`
+	Coins    []Coin
+}
+
+func (config Config) GetCoin() Coin {
 	r := float64(rand.Intn(100) + 1)
 
 	var max float64
-	var current string
+	var current Coin
 	for _, coin := range config.Coins {
 		if max > r {
 			break
 		}
 
 		max += coin.Percentage
-		current = coin.Ticker
+		current = coin
 	}
 
 	return current
