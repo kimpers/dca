@@ -12,7 +12,7 @@ type Coin struct {
 	Ticker       string  `yaml:"ticker"`
 	Percentage   float64 `yaml:"percentage"`
 	BaseCurrency string  `yaml:"baseCurrency"`
-	Amount       string  `yaml:"amount"`
+	Amount       float64  `yaml:"amount"`
 }
 
 func (coin Coin) GetPair() string {
@@ -20,10 +20,9 @@ func (coin Coin) GetPair() string {
 }
 
 type Config struct {
-	Coinbase struct {
+	Kraken struct {
 		Secret     string `yaml:"secret"`
 		Key        string `yaml:"key"`
-		Passphrase string `yaml:"passphrase"`
 	}
 	Schedule string `yaml:"schedule"`
 	Coins    []Coin

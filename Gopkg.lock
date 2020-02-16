@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:270370e57cab221704e6025a2c8712df2740787cc1fa7aea49dea00896351da4"
+  name = "github.com/beldur/kraken-go-api-client"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "6a6d03a111cf73111fe1ce6a24dffe49256be83a"
+
+[[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
@@ -34,14 +42,6 @@
   version = "0.5.7"
 
 [[projects]]
-  digest = "1:ed615c5430ecabbb0fb7629a182da65ecee6523900ac1ac932520860878ffcad"
-  name = "github.com/robfig/cron"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "b41be1df696709bb6395fe435af20370037c0b4c"
-  version = "v1.1"
-
-[[projects]]
   digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
@@ -61,8 +61,8 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/beldur/kraken-go-api-client",
     "github.com/preichenberger/go-gdax",
-    "github.com/robfig/cron",
     "github.com/stretchr/testify/assert",
     "gopkg.in/yaml.v2",
   ]
