@@ -1,18 +1,18 @@
 package lib
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"math/rand"
-
-	yaml "gopkg.in/yaml.v2"
 )
 
 type Coin struct {
-	Ticker       string  `yaml:"ticker"`
-	Percentage   float64 `yaml:"percentage"`
-	BaseCurrency string  `yaml:"baseCurrency"`
-	Amount       float64  `yaml:"amount"`
+	Ticker               string  `json:"ticker"`
+	Percentage           float64 `json:"percentage"`
+	BaseCurrency         string  `json:"baseCurrency"`
+	AmountInBaseCurrency float64 `json:"amountInBaseCurrency"`
 }
 
 func (coin Coin) GetPair() string {
@@ -20,12 +20,12 @@ func (coin Coin) GetPair() string {
 }
 
 type Config struct {
+	Token  string `json:token`
 	Kraken struct {
-		Secret     string `yaml:"secret"`
-		Key        string `yaml:"key"`
+		Secret string `json:"secret"`
+		Key    string `json:"key"`
 	}
-	Schedule string `yaml:"schedule"`
-	Coins    []Coin
+	Coins []Coin
 }
 
 func (config Config) GetCoin() Coin {
@@ -52,8 +52,33 @@ func (config *Config) ReadFile(path string) {
 		log.Fatalf("Could not read config file. Error: %v", err)
 	}
 
-	err = yaml.Unmarshal([]byte(data), &config)
+	err = json.Unmarshal([]byte(data), &config)
 	if err != nil {
 		log.Fatalf("Failed to read yaml config file. Error: %v", err)
 	}
+}
+
+func (config *Config) DecodeBase64Config(encoded string) {
+	decoded, err := base64.URLEncoding.DecodeString(encoded)
+
+	if err != nil {
+		log.Fatalf("Failed to decode encoded config. Error: %v", err)
+	}
+
+	err = json.Unmarshal(decoded, &config)
+	if err != nil {
+		log.Fatalf("Failed to unmarshal decoded config. Error: %v", err)
+	}
+}
+
+func (config *Config) EncodeBase64ConfigFile(path string) string {
+	data, err := ioutil.ReadFile(path)
+
+	if err != nil {
+		log.Fatalf("Could not read config file. Error: %v", err)
+	}
+
+	encoded := base64.URLEncoding.EncodeToString(data)
+
+	return encoded
 }

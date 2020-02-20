@@ -3,11 +3,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:270370e57cab221704e6025a2c8712df2740787cc1fa7aea49dea00896351da4"
+  digest = "1:8e85387d0712f4274716d7f19bf3e0ccdddd2818d329fd0909330cbccb5f4002"
   name = "github.com/beldur/kraken-go-api-client"
   packages = ["."]
   pruneopts = "UT"
-  revision = "6a6d03a111cf73111fe1ce6a24dffe49256be83a"
+  revision = "cc0759da9926e4b379f7abd1ce7cdbef3f699b5a"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
@@ -18,14 +18,6 @@
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:7b5c6e2eeaa9ae5907c391a91c132abfd5c9e8a784a341b5625e750c67e6825d"
-  name = "github.com/gorilla/websocket"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
-  version = "v1.4.0"
-
-[[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
@@ -34,37 +26,27 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:6713db7de45e9d70e337af1a45f8fe76a313d579ca5657812732713eaadca930"
-  name = "github.com/preichenberger/go-gdax"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "eb74ba719d9aa7f1958860367a47cfd7a9a65bfd"
-  version = "0.5.7"
-
-[[projects]]
-  digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
+  digest = "1:5e8f46b412421d2d6cceea845d28ac46f3f5a5f60a6e86f0ee75e24fd43a02a9"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   pruneopts = "UT"
-  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
-  version = "v1.2.2"
+  revision = "3ebf1ddaeb260c4b1ae502a01c7844fa8c1fa0e9"
+  version = "v1.5.1"
 
 [[projects]]
-  digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
+  digest = "1:55b110c99c5fdc4f14930747326acce56b52cfce60b24b1c03ef686ac0e46bb1"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   pruneopts = "UT"
-  revision = "51d6538a90f86fe93ac480b35f37b2be17fef232"
-  version = "v2.2.2"
+  revision = "53403b58ad1b561927d19068c655246f2db79d48"
+  version = "v2.2.8"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/beldur/kraken-go-api-client",
-    "github.com/preichenberger/go-gdax",
     "github.com/stretchr/testify/assert",
-    "gopkg.in/yaml.v2",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
